@@ -1,0 +1,38 @@
+
+body{
+   background-color: rgb(241, 175, 175);
+   font-family:Arial, Helvetica, sans-serif;
+   font-size: large;
+}
+main{
+    
+    padding-top:8%;
+    display: flex;
+    justify-content: center;
+}
+.centrar-flex{
+   background-color: rgb(240, 16, 16);
+   border-radius: 30px;
+   display: flex;
+  justify-content: center;
+   margin: 5px;
+  
+}
+.cuadro{
+    margin:25px;
+    height: 200px;
+    width: 180px;
+}
+p{
+    display: flex;
+    
+}
+button{
+    margin-top:25px ;
+    background-color:blueviolet;
+    border-radius: 10px;
+    overflow: hidden;
+}
+#SALTICO{
+    padding: 50PX;
+}
