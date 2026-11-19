@@ -1,203 +1,59 @@
-//Accedemos segun el css (me refiero al query selector)
-//const documento = document.getElementsByClassName("cuadro ")
-//console.log(documento)
-//Accedemos segun su id
-//const input = document.getElementById("input1")
-//console.log(input)
-//seleccionamos todos los elementos de clase input, por esto el #
-//const input = document.querySelectorAll('#input')
-/* const cuadro = document.querySelector('.cuadro')
-const lista = document.getElementById('lista')
-//accedemos al css del cuadro
-cuadro.style.backgroundColor = 'green';
-//Texto adentro de la lista, de manera textual
-console.log(lista.innerText);
-//el contenido textual y como esta estructurado
-console.log(lista.textContent);
-//el html
-console.log(lista.innerHTML);
+// Ejercicios de manipulación del DOM.
 
-const titulo = document.getElementById('titulo')
-titulo.innerHTML = 'Hola'
-
-//funcion
-lista.onclick = () => {
-    lista.innerText=''
-}
-
-const enlace = document.getElementsByTagName('a')
-//El enlace[0] indica que va a buscar el primero enlace que encuentre, y de vuelve el valor del atributo href
-console.log(enlace[0].getAttribute('href'))
-console.log(enlace[0].setAttribute('href', 'https://www.youtube.com/')) */
-
-/* const cuadro = document.querySelector('.cuadro') */
-/* Accedes a las clases del cuadro y con el add le agregas una clase  */
-/* cuadro.classList.add('circulo') */
-//Verifica si una clase se encuentra en un objeto
-/* cuadro.classList.contains('cuadro')
-cuadro.classList.remove('cuadro') */
-
-// const cuadro = document.querySelector('.cuadro')
-// //Crea un nuevo elemento, especificamente una lista
-// const listanueva = document.createElement('ul')
-// //Le adjuntamos el elemento que creamos por medio del append
-// listanueva.innerHTML = '<li>hola</li>'
-// listanueva.classList.add('circulo', 'tamaño')
-// //por comas puedes separar atributos
-// listanueva.setAttribute('id', 'listanueva', 'href', 'https://www.youtube.com/')
-
-// /* listanueva.onclick = () => {
-//     listanueva.innerText=''
-// } */
-// cuadro.append(listanueva)
-// const Listanueva = document.createElement('ul')
-
-// objeto.append(Listanueva)
-
-// const objeto = document.getElementById('cuadro')
-
-
-// // console.log(cuadro.children[0])
-// // accedemos a los hijos del id
-// console.log(cuadro.lastElementchildchild)
-
-
-
-// color=document.getElementById('ul')
-
-
-// console.log(color)
-// function mostrarClick(parametro){
-//     console.log(parametro)
-// }
-// target.classList.add('yupi')
-// function mostrarClick(){
-//   console.log('click')
-//   var  l=document.getElementById('frutas')
-  
-//   l.classList.add('coca')
-  
-
-
-// }
-
-// const frutas =document.getElementById('frutas')
-
-// function mostrarClick(topping){
-//     console.log(topping.)
-// }
-// frutas.addEventListener('click',mostrarClick(),classList.add('yupi'))
-// const ayudas=document.getElementsByClassName('cuadros')
-
-// for  (const a of ayudas){
-//     ayudas.addEventlistener('click' (e)=> {//e de evento-
-//         console.log(e.target.innerText)
-//         })
-// }
-
-const boton=document.querySelector('button')
-const color=document.getElementById('color')
-
-function generarcolorHexAleatorio(){
-    let digitos='0123456789ABCDEF'
-    let colorHex='#'
-
-
-    for(let i=0; i<6 ; i++){
-         let indiceAleatorio= Math.floor(Math.random()*16)
-         colorHex +=digitos[indiceAleatorio]
+/** Devuelve un color hexadecimal aleatorio, por ejemplo "#2B807B". */
+function generarColorHexAleatorio() {
+    const digitos = '0123456789ABCDEF';
+    let colorHex = '#';
+    for (let i = 0; i < 6; i++) {
+        colorHex += digitos[Math.floor(Math.random() * 16)];
     }
-
-    return colorHex
+    return colorHex;
 }
 
-boton.addEventListener('click', function(){
-    let colorAleatorio=generarcolorHexAleatorio()
-    color.textContent=colorAleatorio
-    document.body.style.backgroundColor=colorAleatorio
-})
-
-const button= document.getElementById('tamano')
-const palabra =document.getElementById('palabra')
-
-
-
-
-
-function generarcolorHexAleatorio(){
-    let digitos='0123456789ABCDEF'
-    let colorHex='#'
-
-
-    for(let i=0; i<6 ; i++){
-         let indiceAleatorio= Math.floor(Math.random()*16)
-         colorHex +=digitos[indiceAleatorio]
-    }
-
-    return colorHex
+/** Devuelve un color de texto (oscuro o blanco) que contraste con el fondo dado. */
+function colorDeTextoPara(hex) {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    const luminancia = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    return luminancia > 0.55 ? '#1d1a17' : '#ffffff';
 }
 
-button.addEventListener('click', function(){
-    let colorAleatorio=generarcolorHexAleatorio()
-    
-    palabra.style.color=colorAleatorio
-})
+// 1. Color de fondo de la página
+const codigoFondo = document.getElementById('color');
+document.getElementById('boton-color').addEventListener('click', () => {
+    const color = generarColorHexAleatorio();
+    codigoFondo.textContent = color;
+    document.body.style.backgroundColor = color;
+});
 
+// 2. Color del texto
+const palabra = document.getElementById('palabra');
+document.getElementById('boton-texto').addEventListener('click', () => {
+    palabra.style.color = generarColorHexAleatorio();
+});
 
+// 3. Tamaño de letra aleatorio (entre 16 y 48 px)
+const tamano = document.getElementById('tamano');
+document.getElementById('boton-tamano').addEventListener('click', () => {
+    tamano.style.fontSize = `${Math.round(Math.random() * 32 + 16)}px`;
+});
 
+// 4. Color de una tarjeta concreta
+const cartaColor = document.getElementById('carta-color');
+const codigoCarta = document.getElementById('codigo-carta');
+document.getElementById('boton-carta').addEventListener('click', () => {
+    const color = generarColorHexAleatorio();
+    codigoCarta.textContent = color;
+    cartaColor.style.backgroundColor = color;
+    cartaColor.style.color = colorDeTextoPara(color);
+});
 
-
-
-const botonfonts = document.getElementById('click')
-const vete =document.getElementById('small')
-
-botonfonts.addEventListener('click', function(){
-    vete.style.fontSize= ((Math.random() * 30)+10 ) + "px"
-})
-
-
-
-
-
-
-
-const boton_c=document.getElementById('chage')
-const color_c=document.getElementById('columbia')
-const back=document.getElementById("contenedor4")
-
-function generarcolorHexAleatorio(){
-    let digitos='0123456789ABCDEF'
-    let colorHex='#'
-
-
-    for(let i=0; i<6 ; i++){
-         let indiceAleatorio= Math.floor(Math.random()*16)
-         colorHex +=digitos[indiceAleatorio]
-    }
-
-    return colorHex
-}
-
-boton_c.addEventListener('click', function(){
-    let colorAleatorio=generarcolorHexAleatorio()
-    color_c.textContent=colorAleatorio
-    back.style.backgroundColor=colorAleatorio
-})
-const  biton=document.getElementById('col')
-const backi=document.getElementById("contenedor5")
-
-biton.addEventListener('click', function(){
-    backi.style.opacity = Math.random()
-})
-
-
-
-const bicho  = document.getElementById("SALTICO");
-
-bicho.addEventListener("click", function() {
-    // URL de la página que deseas abrir en otra pestaña
-    const urlNuevaPestana = "index2.html";
-
-    // Abre una nueva pestaña con la URL especificada
-    window.open(urlNuevaPestana, "_blank");
-})
+// 5. Opacidad del texto (mínimo 10 % para que no desaparezca del todo)
+const cielo = document.getElementById('cielo');
+const opacidad = document.getElementById('opacidad');
+document.getElementById('boton-opacidad').addEventListener('click', () => {
+    const valor = Math.random() * 0.9 + 0.1;
+    cielo.style.opacity = valor;
+    opacidad.textContent = `${Math.round(valor * 100)}%`;
+});

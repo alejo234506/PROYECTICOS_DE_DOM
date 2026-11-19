@@ -1,38 +1,104 @@
+:root {
+    --fondo: #f6f1eb;
+    --carta: #ffffff;
+    --texto: #1d1a17;
+    --suave: #6f665e;
+    --borde: #e6ddd3;
+    --acento: #d63c50;
+    --acento-hover: #b9303f;
+}
 
-body{
-   background-color: rgb(241, 175, 175);
-   font-family:Arial, Helvetica, sans-serif;
-   font-size: large;
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 48px 16px;
+    background-color: var(--fondo);
+    color: var(--texto);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    transition: background-color 0.5s ease;
 }
-main{
-    
-    padding-top:8%;
+
+.encabezado {
+    max-width: 1080px;
+    margin: 0 auto 24px;
+    padding: 28px 32px;
+    border-radius: 24px;
+    background: var(--carta);
+    border: 1px solid var(--borde);
+}
+.etiqueta {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--acento);
+}
+h1 { margin: 6px 0 8px; font-size: clamp(1.8rem, 4vw, 2.6rem); }
+.intro { margin: 0; color: var(--suave); }
+
+.rejilla {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.carta {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px;
+    background: var(--carta);
+    color: var(--texto);
+    border: 1px solid var(--borde);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(40, 25, 10, 0.08);
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
-.centrar-flex{
-   background-color: rgb(240, 16, 16);
-   border-radius: 30px;
-   display: flex;
-  justify-content: center;
-   margin: 5px;
-  
-}
-.cuadro{
-    margin:25px;
-    height: 200px;
-    width: 180px;
-}
-p{
-    display: flex;
-    
-}
-button{
-    margin-top:25px ;
-    background-color:blueviolet;
-    border-radius: 10px;
+.carta h2 { margin: 0; font-size: 1.1rem; }
+
+.muestra {
+    display: grid;
+    place-items: center;
+    height: 96px;
+    margin: 4px 0;
+    border-radius: 14px;
+    background: rgba(127, 110, 95, 0.1);
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
     overflow: hidden;
+    transition: color 0.3s ease, font-size 0.3s ease, opacity 0.3s ease;
 }
-#SALTICO{
-    padding: 50PX;
+.detalle { margin: 0; font-size: 0.92rem; opacity: 0.8; flex: 1; }
+
+button, .boton {
+    display: inline-block;
+    padding: 12px 18px;
+    border: 0;
+    border-radius: 12px;
+    background: var(--acento);
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+button:hover, .boton:hover { background: var(--acento-hover); }
+button:active, .boton:active { transform: scale(0.97); }
+button:focus-visible, .boton:focus-visible { outline: 3px solid var(--texto); outline-offset: 3px; }
+
+@media (max-width: 480px) {
+    body { padding: 24px 16px; }
+    .encabezado { padding: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
 }

@@ -3,55 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CARTICAS</title>
+    <meta name="description" content="Pequeños ejercicios de manipulación del DOM con JavaScript.">
+    <title>Proyecticos de DOM</title>
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
-    <main>
-        <div  id="contenedor" class="centrar-flex" >
-            <div  class="cuadro">
-                <p id="color">#2B807B</p>
-                <button  id=" boton-color "> Cambio de color </button>
-            </div>
-            
-        </div>
-        <div  id="contenedor2" class="centrar-flex" >
-            <div  class="cuadro">
-                <p id='palabra'>AMOR </p>
-                <button  id="tamano"> change text </button>
-            </div>
-            
-        </div>
-        <div  id="contenedor3" class="centrar-flex" >
-            <div  class="cuadro">
-                <p id="small">TAMAÑO</p>
-                <button  id="click"> change size</button>
-            </div>
-            
-        </div>
-        <div  id="contenedor4" class="centrar-flex" >
-            <div  class="cuadro">
-                <p id="columbia">#2B807B</p>
-                <button  id="chage">change cuadro </button>
-            </div>
-            
-        </div>
-        <div  id="contenedor5" class="centrar-flex" >
-            <div  class="cuadro">
-                <p id="colon">CIELO</p>
-                <button  id="col"> Cambio de color </button>
-            </div>
-            
-        </div>
-        <div  id="contenedor6" class="centrar-flex" >
-            <div  class="cuadro">
-                <button  id="SALTICO"> CAMBIO DE PESTAÑA</button>
-            </div>
-            
-        </div>
+    <header class="encabezado">
+        <p class="etiqueta">JavaScript · DOM</p>
+        <h1>Proyecticos de DOM</h1>
+        <p class="intro">Seis tarjetas, seis ejercicios: cambia colores, textos, tamaños y transparencias con eventos de clic.</p>
+    </header>
 
-       
+    <main class="rejilla">
+        <article class="carta">
+            <h2>Color de fondo</h2>
+            <p class="muestra" id="color">#F6F1EB</p>
+            <p class="detalle">Cambia el color de fondo de toda la página.</p>
+            <button type="button" id="boton-color">Cambiar fondo</button>
+        </article>
+
+        <article class="carta">
+            <h2>Color del texto</h2>
+            <p class="muestra" id="palabra">AMOR</p>
+            <p class="detalle">Pinta la palabra con un color aleatorio.</p>
+            <button type="button" id="boton-texto">Cambiar texto</button>
+        </article>
+
+        <article class="carta">
+            <h2>Tamaño</h2>
+            <p class="muestra" id="tamano">TAMAÑO</p>
+            <p class="detalle">Asigna un tamaño de letra aleatorio.</p>
+            <button type="button" id="boton-tamano">Cambiar tamaño</button>
+        </article>
+
+        <article class="carta" id="carta-color">
+            <h2>Color de la tarjeta</h2>
+            <p class="muestra" id="codigo-carta">#FFFFFF</p>
+            <p class="detalle">Cambia el fondo solo de esta tarjeta.</p>
+            <button type="button" id="boton-carta">Cambiar tarjeta</button>
+        </article>
+
+        <article class="carta">
+            <h2>Transparencia</h2>
+            <p class="muestra" id="cielo">CIELO</p>
+            <p class="detalle">Opacidad actual: <output id="opacidad">100%</output></p>
+            <button type="button" id="boton-opacidad">Cambiar opacidad</button>
+        </article>
+
+        <article class="carta">
+            <h2>Otra página</h2>
+            <p class="muestra" aria-hidden="true">→</p>
+            <p class="detalle">Navega a la segunda página del ejercicio.</p>
+            <a class="boton" href="./index2.html">Ir a la página 2</a>
+        </article>
     </main>
+
     <script src="./index.js"></script>
 </body>
 </html>
